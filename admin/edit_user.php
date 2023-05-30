@@ -1,7 +1,7 @@
 <?php
 include "../config/koneksi.php";
-$edit=mysql_query("SELECT * FROM user WHERE id_user='$_GET[id]'");
- $r=mysql_fetch_array($edit);
+$edit=mysqli_query($con, "SELECT * FROM user WHERE id_user='$_GET[id]'");
+ $r=mysqli_fetch_array($edit);
  echo "<h2>Edit User</h2>
  <form method=POST action=update_user.php>
  <input type=hidden name=id value='$r[id_user]'>
