@@ -2,8 +2,8 @@
 session_start();
 include "../config/koneksi.php";
 // Apabila variabel session masih kosong (user belum login)
-if (empty($_SESSION[namauser]) AND
-empty($_SESSION[passuser])){
+if (empty($_SESSION['namauser']) AND
+empty($_SESSION['passuser'])){
 echo "<center>Untuk mengisikan berita, Anda harus login <br>";
 echo "<a href=form_login.php><b>LOGIN</b></a></center>";
 }
@@ -14,22 +14,22 @@ echo "<h2>Tambah Berita</h2>
 enctype='multipart/form-data'>
 <table>
 <tr><td>Judul</td>
-<td> : <input type=text name=judul size=60></td></tr>
+<td> : <input type=text name='judul' size=60></td></tr>
 <tr><td>Kategori</td> <td> :
-<select name=kategori>
+<select name='kategori'>
 <option value=0 selected>- Pilih Kategori -</option>";
-$tampil=mysql_query("SELECT * FROM kategori
+$tampil=mysqli_query($con, "SELECT * FROM kategori
 ORDER BY nama_kategori");
-while($r=mysql_fetch_array($tampil)){
+while($r=mysqli_fetch_array($tampil)){
 echo "<option value=$r[id_kategori]>
 $r[nama_kategori]</option>";
 }
 echo "</select></td></tr>
 <tr><td>Isi Berita</td>
-<td> : <textarea name=isi_berita cols=80 rows=18></textarea>
+<td> : <textarea name='isi_berita' cols=80 rows=18></textarea>
 </td></tr>
 <tr><td>Gambar</td>
-<td> : <input type=file name=fupload size=40></td></tr>
+<td> : <input type=file name='fupload' size=40></td></tr>
 <tr><td colspan=2><input type=submit value=Simpan>
 <input type=button value=Batal onclick=self.history.back()>
 </td></tr>
