@@ -6,8 +6,8 @@ $lokasi_file = $_FILES['fupload']['tmp_name'];
 $nama_file = $_FILES['fupload']['name'];
 // Apabila ada gambar yang diupload
 if (!empty($lokasi_file)){
-move_uploaded_file($lokasi_file,"foto_berita/$nama_file");
-mysql_query("INSERT INTO berita(judul,
+move_uploaded_file($lokasi_file,"../admin/foto_berita/$nama_file");
+mysqli_query($con, "INSERT INTO berita(judul,
 id_kategori,
 isi_berita,
 id_user,
@@ -19,14 +19,14 @@ VALUES('$_POST[judul]',
 '$_POST[kategori]',
 '$_POST[isi_berita]',
 '$_SESSION[namauser]',
-'$jam_skrg',
-'$tgl_skrg',
+'$jam_sekarang',
+'$tgl_sekarang',
 '$hari_ini',
 '$nama_file')");
 }
 // Apabila tidak ada gambar yang diupload
 else{
-mysql_query("INSERT INTO berita(judul,
+mysqli_query($con, "INSERT INTO berita(judul,
 id_kategori,
 isi_berita,
 id_user,
@@ -37,8 +37,8 @@ VALUES('$_POST[judul]',
 '$_POST[kategori]',
 '$_POST[isi_berita]',
 '$_SESSION[namauser]',
-'$jam_skrg',
-'$tgl_skrg',
+'$jam_sekarang',
+'$tgl_sekarang',
 '$hari_ini')");
 }
 header('location:tampil_berita.php');
