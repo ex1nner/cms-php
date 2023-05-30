@@ -1,15 +1,15 @@
 <?php
 echo "<h2>User</h2>
-<form method=POST action=form_user.php>
+<form method=POST action=form_admin.php>
  <input type=submit value='Tambah User'>
  </form>
 <table>
- <tr><th>no</th><th>username</th><th>nama
-lengkap</th><th>email</th><th>aksi</th></tr>";
+ <tr><th>No</th><th>Username</th><th>Nama
+Lengkap</th><th>Email</th><th>Aksi</th></tr>";
  include "../config/koneksi.php";
-$tampil=mysql_query("SELECT * FROM user ORDER BY id_user");
+$tampil=mysqli_query($con, "SELECT * FROM user ORDER BY id_user");
  $no=1;
- while ($r=mysql_fetch_array($tampil)){
+ while ($r=mysqli_fetch_array($tampil)){
  echo "<tr><td>$no</td>
  <td>$r[id_user]</td>
  <td>$r[nama_lengkap]</td>
@@ -19,5 +19,6 @@ $tampil=mysql_query("SELECT * FROM user ORDER BY id_user");
  </td></tr>";
  $no++;
  }
- echo "</table>";
+ echo "</table><br><br>";
+ echo "<button><a href=logout_login.php>Logout</a></button>";
 ?>
