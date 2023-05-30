@@ -1,6 +1,6 @@
 <?php
 echo "<h2>User</h2>
-<form method=POST action=form_admin.php>
+<form method=POST action=form_user.php>
  <input type=submit value='Tambah User'>
  </form>
 <table>
