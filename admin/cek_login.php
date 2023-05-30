@@ -9,8 +9,8 @@ $r=mysqli_fetch_array($login);
 if ($ketemu > 0){
 session_start(); // Untuk memulai session
 // Daftarkan session ke server
-session_register('namauser');
-session_register('passuser');
+// session_register('namauser');
+// session_register('passuser');
 // isi dari variabel session
 $_SESSION['namauser']=$r['id_user'];
 $_SESSION['passuser']=$r['password'];
