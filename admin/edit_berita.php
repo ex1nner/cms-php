@@ -1,8 +1,8 @@
 <?php
 include "../config/koneksi.php";
-$edit=mysql_query("SELECT * FROM berita
+$edit=mysqli_query($con, "SELECT * FROM berita
 WHERE id_berita='$_GET[id]'");
-$r=mysql_fetch_array($edit);
+$r=mysqli_fetch_array($edit);
 echo "<h2>Edit Berita</h2>
 <form method=POST action=update_berita.php
 enctype='multipart/form-data'>
@@ -13,11 +13,11 @@ enctype='multipart/form-data'>
 </td></tr>
 <tr><td>Kategori</td>
 <td> : <select name=kategori>";
-$tampil=mysql_query("SELECT * FROM kategori
+$tampil=mysqli_query($con, "SELECT * FROM kategori
 ORDER BY nama_kategori");
-while($w=mysql_fetch_array($tampil))
+while($w=mysqli_fetch_array($tampil))
 {
-if ($r[id_kategori]==$w[id_kategori]){
+if ($r['id_kategori']==$w['id_kategori']){
 echo "<option value=$w[id_kategori] selected>
 $w[nama_kategori]</option>";
 }
@@ -31,7 +31,7 @@ echo "</select></td></tr>
 <td> : <textarea name=isi_berita cols=80 rows=18>
 $r[isi_berita]</textarea></td></tr>
 <tr><td>Gambar</td>
-<td> : <img src='foto_berita/$r[gambar]'></td></tr>
+<td> : <img src='../admin/foto_berita/$r[gambar]'></td></tr>
 <tr><td>Ganti Gambar</td>
 <td> : <input type=file name=fupload size=40> *)</td></tr>
 <tr><td colspan=2>*) Apabila gambar tidak diubah,
